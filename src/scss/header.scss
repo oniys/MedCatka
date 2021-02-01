@@ -1,0 +1,22 @@
+.header{
+  background: linear-gradient(135deg,#499C00 0,#824D05 16%,#F6F700 40%,#824E00 49%,#F6F700 61%,#9e519e 84%,#207ce5 100%);
+  display: flex;
+  justify-content: space-around;
+}
+.logo{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+.logo-title{
+  font-size: 20px;
+  border-bottom: white solid 1px;
+}
+.logo-img{
+  width: 60px;
+  height: 60px;
+}
+.header-btn{
+  padding: 20px;
+}
