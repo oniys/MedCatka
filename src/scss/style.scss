@@ -1,4 +1,8 @@
 @import "global/reset";
 @import "authorization";
+@import "header";
 
 
+.container{
+  margin: 0 auto;
+}
