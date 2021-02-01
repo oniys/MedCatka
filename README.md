@@ -19,4 +19,3 @@ hight-level - приоритет
 2.
 7.
 
-npm i --save-dev browser-sync gulp gulp-autoprefixer gulp-clean gulp-file-include gulp-imagemin gulp-js-minify gulp-rename gulp-sass reset-css ; 
