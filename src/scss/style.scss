@@ -1,8 +1,14 @@
 @import "global/reset";
 @import "authorization";
 @import "header";
+@import "search";
 
 
 .container{
   margin: 0 auto;
+  background-image: url('/img/pexels.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+
 }

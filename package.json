@@ -35,6 +35,10 @@
     "gulp-webpcss": "^1.1.1",
     "webp-converter": "^2.2.3"
   },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 949594a1f3c28e1b7446e6c5f514104ef5bd9fc6
   "dependencies": {
     "gulp-webpcss": "^1.1.1"
   }

@@ -30,9 +30,7 @@ class Fetch {
         const data = await response.json();
         return data;
     }
-
 // Отримання токена
-
     async getToken (email, password){
         const response = await fetch(this.url.login,{
             method: "POST",
@@ -46,14 +44,12 @@ class Fetch {
         });
         if(response.status === 200){
             const data = await response.text();
-            console.log(data)
+            // console.log(data)
             this.saveToken(data);
             return data
         }else return false
     }
-
 // створення карти
-
     async postFetch (value){
         const response = await fetch(this.url.cards,{
             method: 'POST',
@@ -80,9 +76,7 @@ class Fetch {
         console.log(data);
         return data
     }
-
  // Видалення токена по ид
-
     async deleteFetch (id){
         const response = await fetch(`https://ajax.test-danit.com/api/cards/${id}`,{
             method: 'DELETE',
@@ -100,8 +94,23 @@ class Fetch {
 
 const server = new Fetch();
 signIn.addEventListener('click', function (e) {
-    e.preventDefault();
-    server.getToken(email.value, password.value)
-    console.log('+++')
+    server.getToken(email.value, password.value).then(data=>{
+        if(data){
+            console.log('Acc is already created')
+            server.getFetch()
+        }else{
+            e.preventDefault();
+            const error = document.createElement('p'),
+                  modalAutorization = document.querySelector('.title-authorization');
 
+            error.style.color = 'red';
+            error.textContent = 'Login is not created. Try again';
+
+                    if(modalAutorization.children[0]) {
+                       return false
+                    }else{
+                        modalAutorization.append(error)
+                    }
+                }
+    })
 });

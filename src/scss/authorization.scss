@@ -2,7 +2,7 @@
   padding-left: 10px;
   padding-top: 10px;
   font-size: 20px;
-  color: #ffff;
+  color: #C0D22C;
   text-shadow: #0f150f 1px 1px 1px;
   opacity: .6;
 }
@@ -13,7 +13,7 @@
   transform: translate(-50%, -50%);
   width: 200px;
   height: 200px;
-  background: linear-gradient(#e6b0a6, #9198e5);
+  background: rgba(9, 77, 146, .8);
   border-radius: 5px;
   box-shadow: rgba(104, 145, 250, .4) 1px 3px 8px 1px;
 }
@@ -45,12 +45,6 @@
     box-shadow: #0f150f 1px 1px 6px 1px;
   }
 }
-
-
-
-
-
-
 .overlay {
   opacity: 0;
   visibility: hidden;
@@ -101,10 +95,12 @@
   display: inline-block;
   text-decoration: none;
   margin: 10px;
-  color: #fff;
+  color: #093046;
   border-radius: 3px;
+
 }
 .aut-modal:hover{
   opacity: 0.7;
   transition: all 0.5s;
+
 }
