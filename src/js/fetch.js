@@ -46,7 +46,7 @@ class Fetch {
         });
         if(response.status === 200){
             const data = await response.text();
-            console.log(data);
+            console.log(data)
             this.saveToken(data);
             return data
         }else return false
@@ -64,7 +64,6 @@ class Fetch {
             body: JSON.stringify(value)
         });
         const data = await response.text();
-        console.log(data);
         return data;
     }
 // Отримання всіх карт
@@ -101,7 +100,8 @@ class Fetch {
 
 const server = new Fetch();
 signIn.addEventListener('click', function (e) {
+    e.preventDefault();
     server.getToken(email.value, password.value)
     console.log('+++')
-     e.preventDefault();
+
 });

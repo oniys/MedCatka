@@ -35,11 +35,7 @@
     "gulp-webpcss": "^1.1.1",
     "webp-converter": "^2.2.3"
   },
-  "dependencies": {}
-=======
-    "gulp-webpcss": "^1.1.1"
-  },
   "dependencies": {
-    "webp-converter": "2.2.3"
+    "gulp-webpcss": "^1.1.1"
   }
 }
