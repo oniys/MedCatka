@@ -33,7 +33,11 @@ let path = {
     src:{
         html: [source_folder + "/template/*.html", "!" + source_folder + "/template/_*.html"],
         css: source_folder + "/scss/style.scss",
-        js: source_folder + "/js/script.js",
+        js: [
+            source_folder + "/js/script.js",
+            source_folder + "/js/fetch.js",
+            source_folder + "/js/access.js",
+        ],
         img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
         fonts: source_folder + "/fonts/*"
     },
@@ -102,14 +106,8 @@ function css(){
 function js(){
     return src(path.src.js)
         .pipe(fileinclude())
-        // .pipe(dest(path.build.js))
         .pipe(
             uglify()
-        )
-        .pipe(
-            rename({
-                extname: ".min.js"
-            })
         )
         .pipe(dest(path.build.js))
         .pipe(browsersync.stream())
