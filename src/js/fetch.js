@@ -1,3 +1,7 @@
+const email = document.querySelector('#login'),
+    password = document.querySelector('#password'),
+    signIn = document.querySelector('#check');
+
 class Fetch {
     constructor(){
         this.url = {
@@ -40,7 +44,7 @@ class Fetch {
         });
         if(response.status === 200){
             const data = await response.text();
-            // console.log(data)
+            console.log(data)
             this.saveToken(data);
             return data
         }else return false
@@ -72,7 +76,7 @@ class Fetch {
         console.log(data);
         return data
     }
- // Видалення токена по ид
+    // Видалення токена по ид
     async deleteFetch (id){
         const response = await fetch(`https://ajax.test-danit.com/api/cards/${id}`,{
             method: 'DELETE',
@@ -97,16 +101,16 @@ signIn.addEventListener('click', function (e) {
         }else{
             e.preventDefault();
             const error = document.createElement('p'),
-                  modalAutorization = document.querySelector('.title-authorization');
+                modalAutorization = document.querySelector('.title-authorization');
 
             error.style.color = 'red';
             error.textContent = 'Login is not created. Try again';
 
-                    if(modalAutorization.children[0]) {
-                       return false
-                    }else{
-                        modalAutorization.append(error)
-                    }
-                }
+            if(modalAutorization.children[0]) {
+                return false
+            }else{
+                modalAutorization.append(error)
+            }
+        }
     })
 });
