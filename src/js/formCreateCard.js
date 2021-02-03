@@ -72,11 +72,10 @@ class creareCard {
         const { blockCard, writeForDoctor,formOfCard,nameDoctor,namePartient,cardIcon ,cardIconText} = this.elements;
         const cardInfoFromServer = server.getFetch().then(data=> {
             data.forEach(el=>{
-                nameDoctor.textContent = `Лікар : ${el.doctor}`
-                namePartient.textContent = `ФИО : ${el.FullName}`
+                 nameDoctor.textContent = `Лікар : ${el.doctor}`
+                namePartient.textContent = `ФИО : ${el['Full name']}`
             })
     })
-
 
         this.parentEl.append(blockCard)
     }
