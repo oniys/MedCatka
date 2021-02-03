@@ -15,7 +15,6 @@ class Fetch {
     saveToken(token){
         localStorage.setItem('tokenData', JSON.stringify(token))
     }
-
     // заміна карти
 
     async putFetch(id='',value){
@@ -44,7 +43,6 @@ class Fetch {
         });
         if(response.status === 200){
             const data = await response.text();
-            // console.log(data)
             this.saveToken(data);
             return data
         }else return false
@@ -73,7 +71,6 @@ class Fetch {
             }
         });
         const data = await response.json();
-        console.log(data);
         return data
     }
  // Видалення токена по ид
