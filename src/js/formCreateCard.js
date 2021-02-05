@@ -68,18 +68,27 @@ class creareCard {
         })
     }
     render(){
+        this.createNewCardForm()
         this.handHelper()
         const { blockCard, writeForDoctor,formOfCard,nameDoctor,namePartient,cardIcon ,cardIconText} = this.elements;
-        const cardInfoFromServer = server.getFetch().then(data=> {
-            data.forEach(el=>{
-                 nameDoctor.textContent = `Лікар : ${el.doctor}`
-                namePartient.textContent = `ФИО : ${el['Full name']}`
-            })
-    })
+    //     const cardInfoFromServer = server.getFetch().then(data=> {
+    //         data.forEach(el=>{
+    //             console.log(el.doctor)
+    //              nameDoctor.textContent = `Лікар : ${el.doctor}`
+    //             namePartient.textContent = `ФИО : ${el['Full name']}`
+    //         })
+    // })
 
         this.parentEl.append(blockCard)
     }
 }
- const newCard = new creareCard(document.querySelector('.form-search'))
-newCard.createNewCardForm()
-newCard.render()
+//  const newCard = new creareCard(document.querySelector('.form-search'))
+//
+// newCard.render()
+
+server.getFetch().then(data=> {
+    data.forEach(el=>{
+         new creareCard(document.querySelector('.form-search')).render()
+    }))
+})
+
