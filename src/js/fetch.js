@@ -63,6 +63,7 @@ class Fetch {
 // Отримання всіх карт
 
     async getFetch(id=''){
+
         const response = await fetch(`${this.url.cards}/${id}`,{
             method: "GET",
             headers: {
@@ -78,7 +79,7 @@ class Fetch {
         const response = await fetch(`https://ajax.test-danit.com/api/cards/${id}`,{
             method: 'DELETE',
             headers:{
-                'Authorization': ` Bearer ${localStorage.tokenData.split('\"')[1]}`
+                'Authorization': ` Bearer ${localStorage.tokenData.split(`\"`)[1]}`
             }
         });
         const data = await response.text();
