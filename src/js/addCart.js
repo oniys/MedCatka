@@ -168,6 +168,7 @@ function listActiv() {
     if (cardiology.qualification === this.value || select.value) {
         cardiology.createInputsCardiology()
         renderReception(cardiology);
+
     }
     if (stomatilogy.qualification === this.value) {
         stomatilogy.createInputsStomatology()
@@ -196,11 +197,63 @@ function remove() {
     rangeRemove.deleteContents();
 }
 const saveInformationVisit = document.querySelector('#save');
-
+const listDoc = document.querySelector('#listDoc');
 
 saveInformationVisit.addEventListener('click', (e)=>{
-    console.log(e)
+    e.preventDefault()
+    let timedArray = [];
+    timedArray.push({'doctor': listDoc.value})
+    for(let item of conteinersAdd.children){
+        timedArray.push({[item.className]: item.value})
+}
+const inputValue = Object.assign({}, ...timedArray)
+  //  testOfCreate(inputValue)
+  //   server.postFetch(inputValue)
+
 })
+
+// age: "33"
+// cardiovascularSystem: "213"
+// description: "колить"
+// doctor: "Кардіолог"
+// id: 8762
+// initial: "Тест 2"
+// massIndex: "11"
+// pastIllness: "ні"
+// pressure: "180 на 120"
+// purposeVisit: "серце"
+// urgency: "пріоритетна"
+
+
+// function testOfCreate(content) {
+//      const div = document.createElement('div'),
+//          formOf = document.createElement('form');
+//             div.classList.add('cardContainer');
+//         formOf.classList.add('cardForm');
+//         switch (content.doctor){
+//             case "Кардіолог":
+//                 div.innerHTML =
+//                     `
+//                     `
+//                 break;
+//             case "Стоматолог":
+//                 div.innerHTML = `<p class="card-header" data-name-field="doctor">${content.doctor}</p>
+//                             <p class="card-text" data-name-field="urgency"  hidden = false>Urgency: ${content.urgency}</p>
+//                             <p class="card-text" data-name-field="purposeVisit"  hidden = false>Visit purpose: ${content.purposeVisit}</p>
+//                             <p class="card-text" data-name-field="description"  hidden = false>Visit decrtiption: ${content.description}</p>
+//                             <p class="card-text" data-name-field="lastDateVisit"  hidden = false>Last visit date: ${content.lastDateVisit}</p>`;
+//                 break;
+//             case "Терапевт":
+//                 div.innerHTML =
+//                     `
+//                     `
+//                 break;
+//
+//         }
+//         console.log(div)
+//     document.querySelector('.form-search').append(formOf)
+//      formOf.append(div)
+// }
 
 
 
