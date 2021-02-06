@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const   activeButtons = document.querySelectorAll('.aut-modal'),
-
         overlay = document.querySelector('.over'),
         closeButtons = document.querySelectorAll('.close');
-
 
     activeButtons.forEach(function (butItem)
     {

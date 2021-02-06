@@ -90,16 +90,15 @@
 }
 
 .aut-modal {
-  padding: 5px;
+  padding: 10px;
   display: inline-block;
   text-decoration: none;
   margin: 10px;
   color: #093046;
-  border-bottom: #093046 solid 1px;
+  border-radius: 3px;
 
 }
 .aut-modal:hover{
-  border-bottom: rgba(9, 48, 70, 0.5) solid 1px;
   opacity: 0.7;
   transition: all 0.5s;
 }
