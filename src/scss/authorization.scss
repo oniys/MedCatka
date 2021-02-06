@@ -3,23 +3,21 @@
   padding-top: 10px;
   font-size: 20px;
   color: #C0D22C;
-  text-shadow: #0f150f 1px 1px 1px;
-  opacity: .6;
 }
-.authorization{
+.form-container{
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 200px;
-  height: 200px;
-  background: rgba(9, 77, 146, .8);
+  width: 260px;
+  //height: 200px;
+  background: rgba(9, 77, 146, .9);
   border-radius: 5px;
   box-shadow: rgba(104, 145, 250, .4) 1px 3px 8px 1px;
 }
 
 .inputs{
-  width: 160px;
+  width: 215px;
   padding: 5px 0;
   margin: 7px 0;
   border: none;
@@ -31,9 +29,10 @@
     box-shadow: #6891fa 1px 1px 2px 1px;
   }
 }
-#check{
+.actives-btn{
   margin-top: 10px;
   padding: 5px;
+  margin-bottom: 7px;
   background: #ddffc8;
   border: none;
   border-radius: 4px;
@@ -103,5 +102,48 @@
   border-bottom: rgba(9, 48, 70, 0.5) solid 1px;
   opacity: 0.7;
   transition: all 0.5s;
+}
+#listDoc{
+  border: 1px solid #4169e1;
+  width: 50%;
+  border-radius: 4px;
+  &:focus{
+    outline: none;
+  }
+}
+.containers-add{
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+  padding: 30px 0;
+}
 
+.containers-add > input {
+  padding: 4px 5px;
+  margin: 3px 0;
+  border-radius: 4px;
+  border: 1px solid #4169e1;
+  &:focus{
+    outline: none;
+  }
+}
+.urgency{
+  width: 70%;
+  padding: 4px 5px;
+  margin: 3px 0;
+  border-radius: 4px;
+  border: 1px solid #4169e1;
+  &:focus{
+    outline: none;
+  }
+}
+.containers-add > textarea{
+  margin: 3px 0;
+  border-radius: 4px;
+  border: 1px solid #4169e1;
+  resize: none;
+  &:focus{
+    outline: none;
+  }
 }

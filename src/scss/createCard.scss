@@ -1,0 +1,50 @@
+
+.cardContainer{
+  margin: 20px 0 0 20px;
+  width: 280px;
+  background-color: rgba(9, 77, 146, 0.8);
+  border-radius: 10px;
+}
+.cardBlockImg{
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+.cardIconText{
+  align-self: flex-end;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  font-size: 18px;
+  font-style: normal;
+  color: rgba(192, 210, 44, 1);
+  line-height: 22px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.cardForm{
+  padding: 16px 0 0  46px;
+  font-size: 18px;
+  font-style: normal;
+  color: rgba(192, 210, 44, 1);
+  line-height: 22px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.cardChange,.cardSeeMore,.cardChangeCard,.cardRemove{
+  width: 185px;
+  padding: 7px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid royalblue;
+  background-color:rgba(9, 77, 146, 0.9);
+  color: rgba(192, 210, 44, 1);
+  margin: 2px;
+  font-size: 15px;
+}
+.cardChange{
+  margin-top: 8px;
+}
+.hiddenCard{
+  visibility: hidden;
+}

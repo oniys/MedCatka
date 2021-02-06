@@ -9,9 +9,9 @@ const autoprefixer = require("gulp-autoprefixer");
 const group_media = require("gulp-group-css-media-queries");
 const clean_css = require("gulp-clean-css");
 
- const rename = require("gulp-rename");
+const rename = require("gulp-rename");
 const uglify = require("gulp-uglify-es").default;
- const imagemin = require("gulp-imagemin")
+const imagemin = require("gulp-imagemin")
 
 const webp = require("gulp-webp");
 const webphtml = require("gulp-webp-html");
