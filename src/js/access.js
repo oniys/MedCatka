@@ -97,8 +97,6 @@ async function testOfCreated() {
                         btnGroup.append(btnChange,btnChangeCard,btnRemove,btnSeeMore)
                         div.append(btnGroup)
                  return  formOfCard.append(div)
-
-
         })
     }
 
