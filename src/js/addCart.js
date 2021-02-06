@@ -207,12 +207,8 @@ saveInformationVisit.addEventListener('click', (e)=>{
         timedArray.push({[item.className]: item.value})
 }
 const inputValue = Object.assign({}, ...timedArray)
-    server.postFetch(inputValue)
-
+   server.postFetch(inputValue)
 })
-
-
-
 
 
 

@@ -32,12 +32,13 @@ const server = new Fetch();
             })
     });
 
-async function testOfCreated() {
+async function createdCard() {
    const formOfCard = document.createElement('form');
         formOfCard.classList.add('cardForm');
 
     const response = await server.getFetch();
         response.forEach(content=>{
+
             const div = document.createElement('div'),
                 btnGroup = document.createElement('div'),
                 btnChange = document.createElement('button'),
@@ -48,7 +49,7 @@ async function testOfCreated() {
             btnGroup.classList.add('btnGroup');
             btnChange.classList.add('cardChange');
             btnSeeMore.classList.add('cardSeeMore');
-            btnSeeMore.setAttribute('data-show', 'true')
+            btnSeeMore.setAttribute('data-show', 'true');
             btnChangeCard.classList.add('cardChangeCard');
             btnRemove.classList.add('cardRemove');
             btnChange.textContent = 'Змінити';
@@ -59,9 +60,11 @@ async function testOfCreated() {
 
             btnChangeCard.style.display = 'none';
             btnRemove.style.display = 'none';
+            
+            div.dataset.id = content.id
 
 
-         document.querySelector('.form-search').append(formOfCard)
+         document.querySelector('.filter-conteiner').prepend(formOfCard)
     
         switch (content.doctor){
             case "Кардіолог":
@@ -92,11 +95,13 @@ async function testOfCreated() {
                             <p class="card-text" data-name-field="lastDateVisit"  hidden = false>Вік: ${content.age}</p></div>`;
                 break;
      }
-                        changeCardf(btnChange,btnChangeCard,btnRemove)
-                        seeMoreCardf(btnSeeMore)
-                        btnGroup.append(btnChange,btnChangeCard,btnRemove,btnSeeMore)
-                        div.append(btnGroup)
-                 return  formOfCard.append(div)
+                        changeCardf(btnChange,btnChangeCard,btnRemove);
+                        seeMoreCardf(btnSeeMore);
+                        deleteCardf(btnRemove);
+                        putCardf(btnChangeCard)
+                        btnGroup.append(btnChange,btnChangeCard,btnRemove,btnSeeMore);
+                        div.append(btnGroup);
+                 return  formOfCard.append(div);
         })
     }
 
@@ -134,4 +139,20 @@ async function testOfCreated() {
 
         })
     }
-testOfCreated()
+
+ function deleteCardf(btnRemove){
+        btnRemove.addEventListener('click', (e)=>{
+            e.preventDefault()
+            const responseAnswer = server.deleteFetch(e.target.parentElement.parentElement.dataset.id);
+       if(responseAnswer){
+           e.target.parentElement.parentElement.remove()
+       }else return false
+    })
+}
+
+function putCardf(btnChangeCard){
+    btnChangeCard.addEventListener('click', (e)=>{
+        e.preventDefault()
+    })
+}
+createdCard()
