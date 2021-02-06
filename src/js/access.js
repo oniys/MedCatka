@@ -49,7 +49,7 @@ async function createdCard() {
             btnGroup.classList.add('btnGroup');
             btnChange.classList.add('cardChange');
             btnSeeMore.classList.add('cardSeeMore');
-            btnSeeMore.setAttribute('data-show', 'true')
+            btnSeeMore.setAttribute('data-show', 'true');
             btnChangeCard.classList.add('cardChangeCard');
             btnRemove.classList.add('cardRemove');
             btnChange.textContent = 'Змінити';
@@ -64,7 +64,7 @@ async function createdCard() {
             div.dataset.id = content.id
 
 
-         document.querySelector('.form-search').append(formOfCard)
+         document.querySelector('.filter-conteiner').prepend(formOfCard)
     
         switch (content.doctor){
             case "Кардіолог":
