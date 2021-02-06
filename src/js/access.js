@@ -179,7 +179,7 @@ async function editCard (curentEl){
         case "Терапевт":
             const terapevt = new TerapevtParamsAddVisit();
             terapevt.createInputsTerapevt();
-            renderReception(terapevt,pudDataFromServer);
+            renderReception(terapevt, pudDataFromServer);
             break;
     }
 }
