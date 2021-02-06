@@ -69,7 +69,7 @@ class Fetch {
         const data = await response.json();
         return data
     }
- // Видалення токена по ид
+    // Видалення токена по ид
     async deleteFetch (id){
         const response = await fetch(`https://ajax.test-danit.com/api/cards/${id}`,{
             method: 'DELETE',
