@@ -52,7 +52,7 @@ class Fetch {
             body: JSON.stringify(value)
         });
         const data = await response.text();
-        console.log(data)
+     //   console.log(data)
         return data;
     }
 // Отримання всіх карт
