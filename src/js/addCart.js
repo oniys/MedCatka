@@ -172,7 +172,9 @@ function listActiv() {
     }
     if (stomatilogy.qualification === this.value) {
         stomatilogy.createInputsStomatology()
+        console.log(stomatilogy.createInputsStomatology())
         renderReception(stomatilogy);
+        console.log(renderReception(stomatilogy));
     }
     if (terapevt.qualification === this.value) {
         terapevt.createInputsTerapevt()
@@ -180,17 +182,21 @@ function listActiv() {
     }
 }
 
-function renderReception(reception) {
+function renderReception(reception,options) {
     conteinersAdd.classList.add('containers-add');
     remove();
     for (let key in reception.elements) {
         if (reception.elements.hasOwnProperty(key)) {
-            conteinersAdd.append(reception.elements[key])
+            if(options){
+                reception.elements[key].value = options[key]
+                conteinersAdd.append(reception.elements[key])
+            }else{
+                conteinersAdd.append(reception.elements[key])
+            }
         }
     }
     targetDoctor.append(conteinersAdd);
 }
-
 function remove() {
     const rangeRemove = document.createRange();
     rangeRemove.selectNodeContents(conteinersAdd);

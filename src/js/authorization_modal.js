@@ -1,8 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const   activeButtons = document.querySelectorAll('.aut-modal'),
+ function ready(){
+    const  activeButtons = document.querySelectorAll('.aut-modal'),
 
         overlay = document.querySelector('.over'),
         closeButtons = document.querySelectorAll('.close');
+    // console.log(activeButtons)
 
 
     activeButtons.forEach(function (butItem)
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.modal.active').classList.remove('active');
         this.classList.remove('active');
     });
+}
 
+    document.addEventListener('DOMContentLoaded', ready)
 
-});

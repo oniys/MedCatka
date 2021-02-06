@@ -35,8 +35,8 @@ const server = new Fetch();
 async function createdCard() {
    const formOfCard = document.createElement('form');
         formOfCard.classList.add('cardForm');
-
     const response = await server.getFetch();
+
         response.forEach(content=>{
 
             const div = document.createElement('div'),
@@ -45,6 +45,8 @@ async function createdCard() {
                 btnSeeMore = document.createElement('button'),
                 btnChangeCard = document.createElement('button'),
                 btnRemove = document.createElement('button');
+
+
 
             btnGroup.classList.add('btnGroup');
             btnChange.classList.add('cardChange');
@@ -62,6 +64,8 @@ async function createdCard() {
             btnRemove.style.display = 'none';
             
             div.dataset.id = content.id
+            btnChangeCard.dataset.modal = 'reg';
+            btnChangeCard.classList.add('aut-modal');
 
 
          document.querySelector('.filter-conteiner').prepend(formOfCard)
@@ -107,6 +111,7 @@ async function createdCard() {
 
     function changeCardf (btnChange,btnChangeCard,btnRemove){
         btnChange.addEventListener('click', function(e) {
+            ready()
             e.preventDefault()
             if (btnChangeCard.style.display === 'none') {
                 btnChangeCard.style.display = 'block';
@@ -150,9 +155,32 @@ async function createdCard() {
     })
 }
 
-function putCardf(btnChangeCard){
+ function putCardf(btnChangeCard){
     btnChangeCard.addEventListener('click', (e)=>{
         e.preventDefault()
+        editCard(e)
     })
+}
+
+async function editCard (curentEl){
+    const pudDataFromServer = await server.getFetch(curentEl.target.parentElement.parentElement.dataset.id);
+    console.log(pudDataFromServer)
+    switch (pudDataFromServer.doctor) {
+         case "Кардіолог":
+             const cardiology = new CardiologyParamsAddVisit();
+             cardiology.createInputsCardiology()
+             renderReception(cardiology,pudDataFromServer);
+             break;
+        case "Стоматолог":
+            const stomatilogy = new StomatologyParamsAddVisit();
+            stomatilogy.createInputsStomatology()
+            renderReception(stomatilogy,pudDataFromServer);
+            break;
+        case "Терапевт":
+            const terapevt = new TerapevtParamsAddVisit();
+            terapevt.createInputsTerapevt();
+            renderReception(terapevt,pudDataFromServer);
+            break;
+    }
 }
 createdCard()
