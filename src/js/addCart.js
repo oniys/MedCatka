@@ -8,13 +8,15 @@ const priority = ['звичайна', 'пріоритетна', 'невідкл�
 
 function addRendersSelect() {
     select.id = 'listDoc';
-    doctorProfile.forEach(element => {
-        const option = new Option(`${element}`, `${element}`);
-        select.add(option)
+        doctorProfile.forEach(element => {
+            const option = new Option(`${element}`, `${element}`);
+     if (select.options.length <=2){
+         select.add(option);
+         targetDoctor.append(select)
+     }
     })
-    targetDoctor.append(select)
+    return select
 }
-
 addRendersSelect();
 
 
@@ -202,20 +204,26 @@ function remove() {
     rangeRemove.selectNodeContents(conteinersAdd);
     rangeRemove.deleteContents();
 }
+
 const saveInformationVisit = document.querySelector('#save');
 const listDoc = document.querySelector('#listDoc');
 
 saveInformationVisit.addEventListener('click', (e)=>{
-    e.preventDefault()
-    let timedArray = [];
-    timedArray.push({'doctor': listDoc.value})
-    for(let item of conteinersAdd.children){
-        timedArray.push({[item.className]: item.value})
-}
-const inputValue = Object.assign({}, ...timedArray)
-   server.postFetch(inputValue)
+   // e.preventDefault()
+   // createdCard()
+    server.postFetch(addCardToServer())
 })
 
+function addCardToServer(nameDoctor=null) {
+    console.log(listDoc.value)
+    let timedArray = [];
+    timedArray.push({'doctor': nameDoctor || listDoc.value})
+    for(let item of conteinersAdd.children){
+        timedArray.push({[item.className]: item.value})
+    }
+    const inputValue = Object.assign({}, ...timedArray);
+    return inputValue
+}
 
 
 
