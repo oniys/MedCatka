@@ -1,6 +1,5 @@
 const server = new Fetch();
 
-
 const email = document.querySelector('#login'),
     password = document.querySelector('#password'),
     signIn = document.querySelector('#check'),
@@ -12,6 +11,7 @@ const email = document.querySelector('#login'),
 
     switchBtn.addEventListener('click', changeBtn)
         function changeBtn() {
+            formA.style.display = 'inline';
             const btnSaveForServer = document.querySelector('.reedit');
             saveInformationVisit.style.display = 'inline';
             btnSaveForServer.style.display = 'none'
@@ -30,7 +30,7 @@ const email = document.querySelector('#login'),
                 if(data){
                     server.saveToken(data)
                     modalWindow.style.display = 'none';
-                    overlay.classList.remove('active')
+                    overlay.classList.remove('active');
                     switchBtnAdd.style.visibility ='visible';
                     switchBtnSign.style.visibility = 'hidden';
                     createdCard()
@@ -63,8 +63,6 @@ async function createdCard() {
                 btnSeeMore = document.createElement('button'),
                 btnChangeCard = document.createElement('button'),
                 btnRemove = document.createElement('button');
-
-
 
             btnGroup.classList.add('btnGroup');
             btnChange.classList.add('cardChange');
@@ -123,7 +121,7 @@ async function createdCard() {
                         putCardf(btnChangeCard)
                         btnGroup.append(btnChange,btnChangeCard,btnRemove,btnSeeMore);
                         div.append(btnGroup);
-                 return  formOfCard.append(div);
+                 return formOfCard.append(div);
         })
     }
 
@@ -174,6 +172,7 @@ async function createdCard() {
 
  function putCardf(btnChangeCard){
     btnChangeCard.addEventListener('click', (e)=>{
+        formA.style.display = 'inline';
         saveInformationVisit.style.display = 'none'
         e.preventDefault();
        editCard(e);
@@ -195,6 +194,8 @@ async function editCardServer(curentEl) {
     btnSaveForServer.addEventListener('click', (e) => {
         e.preventDefault();
     const putServer = server.putFetch(curentEl.target.parentElement.parentElement.dataset.id, addCardToServer())
+    formA.style.display = 'none';
+    overlay.classList.remove('active');
 })
 }
 

@@ -205,13 +205,16 @@ function remove() {
     rangeRemove.deleteContents();
 }
 
-const saveInformationVisit = document.querySelector('#save');
-const listDoc = document.querySelector('#listDoc');
+const saveInformationVisit = document.querySelector('#save'),
+      listDoc = document.querySelector('#listDoc'),
+       formA = document.querySelectorAll('[action]')[1];
 
 saveInformationVisit.addEventListener('click', (e)=>{
-   // e.preventDefault()
-   // createdCard()
-    server.postFetch(addCardToServer())
+            formA.style.display = ' none';
+            overlay.classList.remove('active')
+            createdCard()
+            server.postFetch(addCardToServer());
+
 })
 
 function addCardToServer(nameDoctor=null) {
@@ -225,31 +228,4 @@ function addCardToServer(nameDoctor=null) {
     return inputValue
 }
 
-
-
-// Кардиолог
-// цель визита, 1 purpose visit
-// краткое описание визита, 2 description
-// выпадающее поле - срочность (обычная, приоритетная, неотложная), 3 urgency
-// обычное давление,
-// индекс массы тела,
-// перенесенные заболевания
-// сердечно-сосудистой системы,
-// возраст,
-// ФИО. 4 initial
-
-// Стоматолог
-// цель визита, 1 purpose visit
-// краткое описание визита, 2 description
-// выпадающее поле - срочность (обычная, приоритетная, неотложная), 3 urgency
-// дата последнего посещения,
-// ФИО. 4 initial
-//
-//
-// Терапевт:
-// цель визита, 1 purpose visit
-// краткое описание визита, 2 description
-// выпадающее поле - срочность (обычная, приоритетная, неотложная), 3 urgency
-// возраст,
-// ФИО. 4 initial
 
