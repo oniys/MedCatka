@@ -3,8 +3,6 @@
 
         overlay = document.querySelector('.over'),
         closeButtons = document.querySelectorAll('.close');
-    // console.log(activeButtons)
-
 
     activeButtons.forEach(function (butItem)
     {

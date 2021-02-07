@@ -8,13 +8,15 @@ const priority = ['звичайна', 'пріоритетна', 'невідкл�
 
 function addRendersSelect() {
     select.id = 'listDoc';
-    doctorProfile.forEach(element => {
-        const option = new Option(`${element}`, `${element}`);
-        select.add(option)
+        doctorProfile.forEach(element => {
+            const option = new Option(`${element}`, `${element}`);
+     if (select.options.length <=2){
+         select.add(option);
+         targetDoctor.append(select)
+     }
     })
-    targetDoctor.append(select)
+    return select
 }
-
 addRendersSelect();
 
 
@@ -202,46 +204,28 @@ function remove() {
     rangeRemove.selectNodeContents(conteinersAdd);
     rangeRemove.deleteContents();
 }
-const saveInformationVisit = document.querySelector('#save');
-const listDoc = document.querySelector('#listDoc');
+
+const saveInformationVisit = document.querySelector('#save'),
+      listDoc = document.querySelector('#listDoc'),
+       formA = document.querySelectorAll('[action]')[1];
 
 saveInformationVisit.addEventListener('click', (e)=>{
-    e.preventDefault()
-    let timedArray = [];
-    timedArray.push({'doctor': listDoc.value})
-    for(let item of conteinersAdd.children){
-        timedArray.push({[item.className]: item.value})
-}
-const inputValue = Object.assign({}, ...timedArray)
-   server.postFetch(inputValue)
+            formA.style.display = ' none';
+            overlay.classList.remove('active')
+            createdCard()
+            server.postFetch(addCardToServer());
+
 })
 
+function addCardToServer(nameDoctor=null) {
+    console.log(listDoc.value)
+    let timedArray = [];
+    timedArray.push({'doctor': nameDoctor || listDoc.value})
+    for(let item of conteinersAdd.children){
+        timedArray.push({[item.className]: item.value})
+    }
+    const inputValue = Object.assign({}, ...timedArray);
+    return inputValue
+}
 
-
-
-// Кардиолог
-// цель визита, 1 purpose visit
-// краткое описание визита, 2 description
-// выпадающее поле - срочность (обычная, приоритетная, неотложная), 3 urgency
-// обычное давление,
-// индекс массы тела,
-// перенесенные заболевания
-// сердечно-сосудистой системы,
-// возраст,
-// ФИО. 4 initial
-
-// Стоматолог
-// цель визита, 1 purpose visit
-// краткое описание визита, 2 description
-// выпадающее поле - срочность (обычная, приоритетная, неотложная), 3 urgency
-// дата последнего посещения,
-// ФИО. 4 initial
-//
-//
-// Терапевт:
-// цель визита, 1 purpose visit
-// краткое описание визита, 2 description
-// выпадающее поле - срочность (обычная, приоритетная, неотложная), 3 urgency
-// возраст,
-// ФИО. 4 initial
 

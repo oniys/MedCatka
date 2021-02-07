@@ -58,7 +58,6 @@ class Fetch {
 // Отримання всіх карт
 
     async getFetch(id=''){
-
         const response = await fetch(`${this.url.cards}/${id}`,{
             method: "GET",
             headers: {

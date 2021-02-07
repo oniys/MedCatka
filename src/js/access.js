@@ -1,25 +1,43 @@
+const server = new Fetch();
+
 const email = document.querySelector('#login'),
     password = document.querySelector('#password'),
     signIn = document.querySelector('#check'),
     switchBtnSign = document.querySelector('.switchBtnSign'),
     switchBtnAdd = document.querySelector('.switchBtnAdd'),
     modalWindow =document.querySelector('.modal'),
-    overlay = document.querySelector('.overlay');
+    overlay = document.querySelector('.overlay'),
+    switchBtn = document.querySelector('.switchBtnAdd');
 
-const server = new Fetch();
+    switchBtn.addEventListener('click', changeBtn)
+        function changeBtn() {
+            formA.style.display = 'inline';
+            const btnSaveForServer = document.querySelector('.reedit');
+            saveInformationVisit.style.display = 'inline';
+            btnSaveForServer.style.display = 'none'
+        }
+
+        if(localStorage.length === 1){
+            switchBtnSign.style.visibility = 'hidden';
+            createdCard()
+        }else{
+            switchBtnSign.style.visibility = 'visible';
+        }
+
     signIn.addEventListener('click',  function (e) {
         e.preventDefault()
             server.getToken(email.value, password.value).then(data=>{
                 if(data){
                     server.saveToken(data)
                     modalWindow.style.display = 'none';
-                    overlay.classList.remove('active')
+                    overlay.classList.remove('active');
                     switchBtnAdd.style.visibility ='visible';
                     switchBtnSign.style.visibility = 'hidden';
+                    createdCard()
                 }else{
                     e.preventDefault()
                     const error = document.createElement('p'),
-                    modalAutorization = document.querySelector('.title-form');
+                     modalAutorization = document.querySelector('.title-form');
                      error.style.color = 'red';
                      error.textContent = 'Login is not created. Try again';
 
@@ -45,8 +63,6 @@ async function createdCard() {
                 btnSeeMore = document.createElement('button'),
                 btnChangeCard = document.createElement('button'),
                 btnRemove = document.createElement('button');
-
-
 
             btnGroup.classList.add('btnGroup');
             btnChange.classList.add('cardChange');
@@ -105,7 +121,7 @@ async function createdCard() {
                         putCardf(btnChangeCard)
                         btnGroup.append(btnChange,btnChangeCard,btnRemove,btnSeeMore);
                         div.append(btnGroup);
-                 return  formOfCard.append(div);
+                 return formOfCard.append(div);
         })
     }
 
@@ -129,7 +145,6 @@ async function createdCard() {
                 if (e.target.dataset.show ==='true'){
                     const elementShow = e.target.parentElement.parentElement.querySelectorAll('p');
                     elementShow.forEach(element =>{
-                        console.log(element)
                         element.hidden= false;
                 });
                     e.target.dataset.show ='false';
@@ -157,30 +172,51 @@ async function createdCard() {
 
  function putCardf(btnChangeCard){
     btnChangeCard.addEventListener('click', (e)=>{
-        e.preventDefault()
-        editCard(e)
+        formA.style.display = 'inline';
+        saveInformationVisit.style.display = 'none'
+        e.preventDefault();
+       editCard(e);
+       editCardServer(e);
     })
 }
 
-async function editCard (curentEl){
+async function editCardServer(curentEl) {
+    const btnSaveForServer = document.querySelector('.reedit'),
+          timeNameOfDoctor = curentEl.target.parentElement.parentElement.children[0].firstElementChild.textContent.split(' ')[2];
+    const valueOfDoctor = addRendersSelect();
+    console.log(!Boolean(timeNameOfDoctor))
+    if(!Boolean(timeNameOfDoctor)) {
+        valueOfDoctor.value = 'Кардіолог'
+    } else {
+        valueOfDoctor.value = timeNameOfDoctor
+    }
+    btnSaveForServer.style.display = 'inline'
+    btnSaveForServer.addEventListener('click', (e) => {
+        e.preventDefault();
+    const putServer = server.putFetch(curentEl.target.parentElement.parentElement.dataset.id, addCardToServer())
+    formA.style.display = 'none';
+    overlay.classList.remove('active');
+})
+}
+
+async function editCard(curentEl){
     const pudDataFromServer = await server.getFetch(curentEl.target.parentElement.parentElement.dataset.id);
-    console.log(pudDataFromServer)
     switch (pudDataFromServer.doctor) {
          case "Кардіолог":
              const cardiology = new CardiologyParamsAddVisit();
-             cardiology.createInputsCardiology()
-             renderReception(cardiology,pudDataFromServer);
+                 cardiology.createInputsCardiology()
+                 renderReception(cardiology,pudDataFromServer);
              break;
         case "Стоматолог":
             const stomatilogy = new StomatologyParamsAddVisit();
-            stomatilogy.createInputsStomatology()
-            renderReception(stomatilogy,pudDataFromServer);
+                stomatilogy.createInputsStomatology()
+                renderReception(stomatilogy,pudDataFromServer);
             break;
         case "Терапевт":
             const terapevt = new TerapevtParamsAddVisit();
-            terapevt.createInputsTerapevt();
-            renderReception(terapevt,pudDataFromServer);
+                terapevt.createInputsTerapevt();
+                renderReception(terapevt, pudDataFromServer);
             break;
     }
 }
-createdCard()
+
