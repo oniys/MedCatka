@@ -4,7 +4,7 @@ const select = document.createElement('select')
 
 
 const doctorProfile = ['Кардіолог', 'Стоматолог', 'Терапевт'];
-const priority = ['звичайна', 'пріоритетна', 'невідкладна'];
+const priority = ['Звичайна', 'Пріоритетна', 'Невідкладна'];
 
 function addRendersSelect() {
     select.id = 'listDoc';
@@ -14,6 +14,11 @@ function addRendersSelect() {
          select.add(option);
          targetDoctor.append(select)
      }
+    })
+
+    priority.forEach(element => {
+        const option = new Option(`${element}`, `${element}`);
+        selectSearch.add(option);
     })
     return select
 }
@@ -174,9 +179,9 @@ function listActiv() {
     }
     if (stomatilogy.qualification === this.value) {
         stomatilogy.createInputsStomatology()
-        console.log(stomatilogy.createInputsStomatology())
+        // console.log(stomatilogy.createInputsStomatology())
         renderReception(stomatilogy);
-        console.log(renderReception(stomatilogy));
+        // console.log(renderReception(stomatilogy));
     }
     if (terapevt.qualification === this.value) {
         terapevt.createInputsTerapevt()
@@ -212,13 +217,14 @@ const saveInformationVisit = document.querySelector('#save'),
 saveInformationVisit.addEventListener('click', (e)=>{
             formA.style.display = ' none';
             overlay.classList.remove('active')
-            createdCard()
+            // createdCard()
             server.postFetch(addCardToServer());
+    // createdCard()
 
 })
 
 function addCardToServer(nameDoctor=null) {
-    console.log(listDoc.value)
+    // console.log(listDoc.value)
     let timedArray = [];
     timedArray.push({'doctor': nameDoctor || listDoc.value})
     for(let item of conteinersAdd.children){
