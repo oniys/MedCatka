@@ -212,7 +212,7 @@ const saveInformationVisit = document.querySelector('#save'),
 saveInformationVisit.addEventListener('click', (e)=>{
             formA.style.display = ' none';
             overlay.classList.remove('active')
-            createdCard()
+          //  createdCard()
             server.postFetch(addCardToServer());
 
 })
