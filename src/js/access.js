@@ -17,12 +17,19 @@ const email = document.querySelector('#login'),
             btnSaveForServer.style.display = 'none'
         }
 
-        if(localStorage.length === 1){
-            switchBtnSign.style.visibility = 'hidden';
-            createdCard()
-        }else{
-            switchBtnSign.style.visibility = 'visible';
-        }
+
+    if (localStorage.getItem('tokenData') !== null) {
+        switchBtnAdd.style.visibility = 'visible';
+        switchBtnSign.remove()
+        createdForm()
+        createdCard()
+    }else
+    {
+        switchBtnAdd.style.visibility = 'hidden';
+
+    }
+
+
 
     signIn.addEventListener('click',  function (e) {
         e.preventDefault()
@@ -33,7 +40,7 @@ const email = document.querySelector('#login'),
                     overlay.classList.remove('active');
                     switchBtnAdd.style.visibility ='visible';
                     switchBtnSign.style.visibility = 'hidden';
-                    createdCard()
+                    // createdCard()
                 }else{
                     e.preventDefault()
                     const error = document.createElement('p'),
@@ -50,10 +57,28 @@ const email = document.querySelector('#login'),
             })
     });
 
+function createdForm() {
+    const formOfCard = document.createElement('form');
+    formOfCard.classList.add('cardForm');
+    document.querySelector('.filter-conteiner').prepend(formOfCard)
+}
+
+function removeCartRender(){
+    const removeRenderCart = document.querySelectorAll(".cardContainer")
+    removeRenderCart.forEach(elements=> {
+        elements.remove()
+    })
+}
+
+
 async function createdCard() {
-   const formOfCard = document.createElement('form');
-        formOfCard.classList.add('cardForm');
+    removeCartRender();
+
+    const formOfCard = document.querySelector('.cardForm');
+
     const response = await server.getFetch();
+
+    // console.log(response)
 
         response.forEach(content=>{
 
@@ -181,22 +206,25 @@ async function createdCard() {
 }
 
 async function editCardServer(curentEl) {
+
     const btnSaveForServer = document.querySelector('.reedit'),
           timeNameOfDoctor = curentEl.target.parentElement.parentElement.children[0].firstElementChild.textContent.split(' ')[2];
     const valueOfDoctor = addRendersSelect();
-    console.log(!Boolean(timeNameOfDoctor))
+    // console.log(!Boolean(timeNameOfDoctor))
     if(!Boolean(timeNameOfDoctor)) {
         valueOfDoctor.value = 'Кардіолог'
     } else {
         valueOfDoctor.value = timeNameOfDoctor
     }
-    btnSaveForServer.style.display = 'inline'
-    btnSaveForServer.addEventListener('click', (e) => {
-        e.preventDefault();
-    const putServer = server.putFetch(curentEl.target.parentElement.parentElement.dataset.id, addCardToServer())
-    formA.style.display = 'none';
-    overlay.classList.remove('active');
-})
+    btnSaveForServer.style.display = 'inline';
+
+    const editClick = () => {
+        server.putFetch(curentEl.target.parentElement.parentElement.dataset.id, addCardToServer())
+        formA.style.display = 'none';
+        overlay.classList.remove('active');
+        btnSaveForServer.removeEventListener('click', editClick)
+    }
+    btnSaveForServer.addEventListener('click', editClick)
 }
 
 async function editCard(curentEl){
