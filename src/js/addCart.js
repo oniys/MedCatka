@@ -1,10 +1,12 @@
-const targetDoctor = document.querySelector(".form-add")
-const conteinersAdd = document.createElement('div')
-const select = document.createElement('select')
+const targetDoctor = document.querySelector(".form-add");
+const conteinersAdd = document.createElement('div');
+const select = document.createElement('select');
 
 
 const doctorProfile = ['Кардіолог', 'Стоматолог', 'Терапевт'];
 const priority = ['Звичайна', 'Пріоритетна', 'Невідкладна'];
+
+//-------Додає на сторінку option докторів
 
 function addRendersSelect() {
     select.id = 'listDoc';
@@ -15,7 +17,6 @@ function addRendersSelect() {
          targetDoctor.append(select)
      }
     })
-
     priority.forEach(element => {
         const option = new Option(`${element}`, `${element}`);
         selectSearch.add(option);
@@ -24,6 +25,7 @@ function addRendersSelect() {
 }
 addRendersSelect();
 
+//-------------- Головний клас візит------------------
 
 class GeneralParamsAddVisit {
     constructor(purposeVisit, description, urgency, initial) {
@@ -33,6 +35,7 @@ class GeneralParamsAddVisit {
         this._initial = initial;
     }
 }
+//--------------клас кардиолог----------------------
 
 class CardiologyParamsAddVisit extends GeneralParamsAddVisit {
     constructor(purposeVisit, description, urgency, initial) {
@@ -89,6 +92,8 @@ class CardiologyParamsAddVisit extends GeneralParamsAddVisit {
     }
 }
 
+//--------------клас стоматолог----------------------
+
 class StomatologyParamsAddVisit extends GeneralParamsAddVisit {
     constructor(purposeVisit, description, urgency, initial) {
         super(purposeVisit, description, urgency, initial);
@@ -125,6 +130,8 @@ class StomatologyParamsAddVisit extends GeneralParamsAddVisit {
         })
     }
 }
+
+//--------------клас терапевт ----------------------
 
 class TerapevtParamsAddVisit extends GeneralParamsAddVisit {
     constructor(purposeVisit, description, urgency, initial) {
@@ -167,6 +174,8 @@ class TerapevtParamsAddVisit extends GeneralParamsAddVisit {
 document.getElementById('add').onclick = listActiv;
 document.getElementById("listDoc").onchange = listActiv;
 
+//--------- рендер візиту всередину модального вікна------------------
+
 function listActiv() {
     const cardiology = new CardiologyParamsAddVisit()
     const stomatilogy = new StomatologyParamsAddVisit()
@@ -179,9 +188,7 @@ function listActiv() {
     }
     if (stomatilogy.qualification === this.value) {
         stomatilogy.createInputsStomatology()
-        // console.log(stomatilogy.createInputsStomatology())
         renderReception(stomatilogy);
-        // console.log(renderReception(stomatilogy));
     }
     if (terapevt.qualification === this.value) {
         terapevt.createInputsTerapevt()
@@ -217,16 +224,16 @@ const saveInformationVisit = document.querySelector('#save'),
 saveInformationVisit.addEventListener('click', (e)=>{
             formA.style.display = ' none';
             overlay.classList.remove('active')
-            // createdCard()
             server.postFetch(addCardToServer());
-    // createdCard()
 
 })
 
+//--------- додавання інформації з модульного вікна на сервер  ------------------
+
 function addCardToServer(nameDoctor=null) {
-    // console.log(listDoc.value)
     let timedArray = [];
-    timedArray.push({'doctor': nameDoctor || listDoc.value})
+    timedArray.push({'doctor': nameDoctor || listDoc.value});
+     timedArray.push({'status': 'Open'})
     for(let item of conteinersAdd.children){
         timedArray.push({[item.className]: item.value})
     }

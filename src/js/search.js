@@ -1,6 +1,5 @@
 const selectSearch = document.getElementById('prioritySearch')
 
-
 selectSearch.onchange = function() {
     const indexSelected = selectSearch.selectedIndex,
         options = selectSearch.querySelectorAll('option')[indexSelected];

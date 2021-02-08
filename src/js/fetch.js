@@ -53,7 +53,7 @@ class Fetch {
             body: JSON.stringify(value)
         });
         const data = await response.text();
-          console.log(data)
+
         createdCard();
         return data;
     }
