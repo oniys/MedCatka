@@ -154,7 +154,8 @@ async function createdCard() {
                         putCardf(btnChangeCard)
                         btnGroup.append(btnChange,btnChangeCard,btnRemove,btnSeeMore);
                         div.append(btnGroup);
-                 return formOfCard1.append(div);
+            drag()
+            return formOfCard1.append(div);
         })
     }
 

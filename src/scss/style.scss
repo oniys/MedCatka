@@ -9,10 +9,10 @@
 .container{
   margin: 0 auto;
   background-image: url('/img/pexels.jpg');
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
-  min-height: 100vh;
-  padding-bottom: 20px;
-
-
+  padding-bottom: 500px;
+}
+body {
+  background: #6f7074;
 }
