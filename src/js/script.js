@@ -3,4 +3,5 @@
 @@include('fetch.js');
 @@include('addCart.js');
 @@include('access.js');
+@@include('dragdrop.js');
 
