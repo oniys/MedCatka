@@ -18,8 +18,10 @@ function addRendersSelect() {
      }
     })
     priority.forEach(element => {
-        const option = new Option(`${element}`, `${element}`);
-        selectSearch.add(option);
+        if (selectSearch.options.length <=3) {
+            const option = new Option(`${element}`, `${element}`);
+            selectSearch.add(option);
+        }
     })
     return select
 }
