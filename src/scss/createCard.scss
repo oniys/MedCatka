@@ -42,6 +42,8 @@
   top: 240px;
   filter: drop-shadow(0 0px 2px #3d3d3d);
   display: flex;
+  flex-wrap: wrap;
+  align-content: baseline;
   overflow: hidden;
   background: -o-linear-gradient(#bbb,transparent 1px),-o-linear-gradient(left,#bbb,transparent 1px);
   background: linear-gradient(#bbb,#7293b1bf 1px),linear-gradient(

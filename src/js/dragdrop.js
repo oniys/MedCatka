@@ -5,9 +5,6 @@ function drag() {
 
     document.onmousedown = event => {
 
-        console.log(event.target)
-
-
         if (!event.target.classList.contains('cardContainer')) return;
 
         const scrollHeight = Math.max(
@@ -19,7 +16,6 @@ function drag() {
         saveX = event.offsetX;
         saveY = event.offsetY;
 
-        console.log(saveY)
 
         document.onmousemove = event => {
             target.style.position = 'absolute';
@@ -35,11 +31,21 @@ function drag() {
 
     function check(event, target, scrollHeight){
         if (event.pageX - saveX <=0) target.style.left = 0 ;
-        console.log(target.style.left);
         if (event.pageY - saveY <=0) target.style.top = 0;
         if (event.pageY + (target.clientHeight - saveY) >= scrollHeight) {
             target.style.top = scrollHeight-target.clientHeight+'px';
         }
         if (event.pageX + (target.clientWidth - saveX) >= document.body.scrollWidth) target.style.left = document.body.scrollWidth - target.clientWidth+'px ';
+
+        // statusСhange(scrollHeight)
     }
+
+
+
+    // function statusСhange(event) {
+    //
+    //     console.log(event)
+    //
+    // }
+
 }

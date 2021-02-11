@@ -12,6 +12,7 @@
                 modalElem = document.querySelector('.modal[data-modal="' + modalId + '"]');
             modalElem.classList.add('active');
             overlay.classList.add('active');
+            select.options[0].selected=true;
         });
     });
 
@@ -22,7 +23,6 @@
             overlay.classList.remove('active');
         });
     });
-
     document.body.addEventListener('keyup', function (e) {
         const key = e.keyCode;
         if (key == 27) {
