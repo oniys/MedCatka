@@ -9,12 +9,14 @@
 * GULP
 
 ## Developers:
-1. Berlous D.K (slack) - git;
-2. Kovalcuk V.N (slack) - git;
-3. Sobchenko D.M (Od1Seu) - https://gitlab.com/Od1Seu;
+1. Berlous D.K (Vadim) - https://github.com/KovalchukVadim;
+2. Kovalcuk V.N (Dmitriy Berlous) - https://github.com/oniys;
+3. Sobchenko D.M (Od1Seu) - https://github.com/Od1Seu;
 
 # Tasks for developers:
 3. Access.js | fetch.js  - Od1Seu;
+2. addCart.js | dragdrop.js
+1. search.js | authorization_modal.js
 
 
 # Run project locally:
