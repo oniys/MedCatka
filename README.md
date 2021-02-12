@@ -1,20 +1,40 @@
-# MedCatka
+# ProHealth
 
-1. верстка хедера
-2. верстка модального окна для авторизации
-3. верстка фильтров 
-4. верстка модального окна для добавления карт ( она же для редактирования)
-5. верстка екземпляра карты 
-6. создание модуля ( класса ) для запросов ( рестфул можно наследовать для аунтификации если нужно)
-7. авторизация через js
-8. создание  класса и наследников для записи новой карты 
-9. настройка фильтров 
-10. организация редактирование  карт 
-11. органицация удаления карты 
-12. драг дроп ефект
+## List of using technologies
+
+* HTML5
+* CSS3
+* SCSS
+* JS
+* GULP
+
+## Developers:
+1. Berlous D.K (Vadim) - https://github.com/KovalchukVadim;
+2. Kovalcuk V.N (Dmitriy Berlous) - https://github.com/oniys;
+3. Sobchenko D.M (Od1Seu) - https://github.com/Od1Seu;
+
+# Tasks for developers:
+3. Access.js | fetch.js  - Od1Seu;
+2. addCart.js | dragdrop.js
+1. search.js | authorization_modal.js
 
 
-hight-level - приоритет
-6.
-2.
-7.
+# Run project locally:
+
+1. Clone git repository
+2. Install node.js
+3. Open local repository in terminal
+4. Install all packages
+
+# then:
+```javascript
+ npm install
+```
+
+```javascript
+ npm install gulp -g
+```
+```javascript
+ gulp 
+```
+

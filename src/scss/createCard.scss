@@ -1,0 +1,84 @@
+
+.cardContainer{
+  margin: 20px;
+  width: 190px;
+  background-color: rgba(9, 77, 146, 0.8);
+  border-radius: 10px;
+  display: table;
+  border-top: 18px solid #d6b40f;
+  user-select: none;
+  cursor: pointer;
+  z-index: 100;
+  box-shadow: 2px 2px 6px #000;
+}
+.cardBlockImg{
+  display: flex;
+  justify-content: center;
+  padding-top: 10px;
+}
+.cardIconText{
+  align-self: flex-end;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  font-size: 16px;
+  font-style: normal;
+  color: rgba(192, 210, 44, 1);
+  line-height: 22px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.cardForm{
+  font-size: 12px;
+  font-style: normal;
+  color: #c0d22c;
+  line-height: 22px;
+  font-weight: 500;
+  letter-spacing: .6px;
+  position: absolute;
+  border: 2px solid rgba(57,63,221,.67);
+  border-radius: 12px;
+  width: 1000px;
+  height: 1000px;
+  top: 240px;
+  filter: drop-shadow(0 0px 2px #3d3d3d);
+  margin-top: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: baseline;
+  overflow: hidden;
+  background: -o-linear-gradient(#bbb,transparent 1px),-o-linear-gradient(left,#bbb,transparent 1px);
+  background: linear-gradient(#bbb,#7293b1bf 1px),linear-gradient(
+                  90deg
+          ,#fffffff7,#ffffff14 1px);
+  background-size: 200px 26px;
+  background-position: center center;
+}
+.cardForm:before {
+  content: "пн\a0\a0\a0вт\a0\a0\a0ср\a0\a0\a0чт\a0\a0\a0пт"; /* Добавляем после текста абзаца */
+  position: absolute;
+  letter-spacing: 30px;
+  font-size: 28px;
+  opacity: .6;
+  left: 75px;
+  top: -5px;
+}
+
+
+.cardChange,.cardSeeMore,.cardChangeCard,.cardRemove{
+  width: 165px;
+  padding: 7px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid royalblue;
+  background-color:rgba(9, 77, 146, 0.9);
+  color: rgba(192, 210, 44, 1);
+  margin: 2px;
+  font-size: 11px;
+}
+.cardChange{
+  margin-top: 8px;
+}
+.hiddenCard{
+  visibility: hidden;
+}

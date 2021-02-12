@@ -1,0 +1,18 @@
+@import "global/reset";
+@import "authorization";
+@import "header";
+@import "search";
+@import "createCard";
+@import "access";
+
+
+.container{
+  margin: 0 auto;
+  background-image: url('/img/pexels.jpg');
+  background-repeat: round;
+  background-size: cover;
+  padding-bottom: 500px;
+}
+body {
+  background: #6f7074;
+}
