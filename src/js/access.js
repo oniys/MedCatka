@@ -7,7 +7,12 @@ const email = document.querySelector('#login'),
     switchBtnAdd = document.querySelector('.switchBtnAdd'),
     modalWindow = document.querySelector('.modal'),
     overlay = document.querySelector('.overlay'),
-    switchBtn = document.querySelector('.switchBtnAdd');
+    switchBtn = document.querySelector('.switchBtnAdd'),
+    checkPage = document.createElement('p'),
+    filterContainer = document.querySelector('.cardForm');
+    checkPage.textContent = 'Картка не була додана!';
+    checkPage.classList.add("checkPage");
+    
 
     switchBtn.addEventListener('click', changeBtn)
         function changeBtn() {
@@ -17,7 +22,6 @@ const email = document.querySelector('#login'),
             btnSaveForServer.style.display = 'none';
         }
 
-
     if (localStorage.getItem('tokenData') !== null) {
         switchBtnAdd.style.visibility = 'visible';
         switchBtnSign.remove();
@@ -25,17 +29,22 @@ const email = document.querySelector('#login'),
     }else
     {
         switchBtnAdd.style.visibility = 'hidden';
-
     }
 
 function checkCardOnPage (){
         const checkPage = document.createElement('p'),
-            filterContainer = document.querySelector('.filter-conteiner');
+            filterContainer = document.querySelector('.cardForm');
               checkPage.textContent = 'Картка не була додана!';
-    filterContainer.prepend(checkPage)
-
-
-
+    filterContainer.prepend(checkPage);
+}
+    
+function check (){
+    const findConteinerOfCard = document.querySelector('.cardContainer');
+    if(!findConteinerOfCard){
+     checkPage.style.visibility = 'visible';
+    }else{
+        checkPage.style.visibility = 'hidden';
+    }
 }
 //---------  Авторизації  ------------------
 
@@ -70,6 +79,7 @@ function createdForm() {
         const formOfCard = document.createElement('form');
     formOfCard.classList.add('cardForm');
     document.querySelector('.filter-conteiner').prepend(formOfCard);
+    document.querySelector('.filter-conteiner').insertAdjacentElement('afterend',checkPage);
 }
 
 function removeCartRender(){
@@ -147,15 +157,15 @@ async function createdCard() {
                             <p class="card-text" data-name-field="lastDateVisit"  hidden = false>Вік: ${content.age}</p></div>`;
                 break;
      }
-
                         changeCardf(btnChange,btnChangeCard,btnRemove);
                         seeMoreCardf(btnSeeMore);
                         deleteCardf(btnRemove);
                         putCardf(btnChangeCard)
                         btnGroup.append(btnChange,btnChangeCard,btnRemove,btnSeeMore);
                         div.append(btnGroup);
-            drag()
-            return formOfCard1.append(div);
+                        drag();
+                        formOfCard1.append(div);
+                        check();
         })
     }
 
@@ -204,8 +214,10 @@ async function createdCard() {
         btnRemove.addEventListener('click', (e)=>{
             e.preventDefault()
             const responseAnswer = server.deleteFetch(e.target.parentElement.parentElement.dataset.id);
+
        if(responseAnswer){
            e.target.parentElement.parentElement.remove()
+           check ()
        }else return false
     })
 }

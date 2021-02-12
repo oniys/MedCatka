@@ -14,7 +14,7 @@
 3. Sobchenko D.M (Od1Seu) - https://gitlab.com/Od1Seu;
 
 # Tasks for developers:
-
+3. Access.js | fetch.js  - Od1Seu;
 
 
 # Run project locally:
